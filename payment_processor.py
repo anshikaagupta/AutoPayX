@@ -9,18 +9,10 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class PaymentProcessor:
-    """
-    Handles payment processing operations using various payment gateways
-    and banking APIs.
-    """
+   
     
     def __init__(self, stripe_api_key: str = None):
-        """
-        Initialize payment processor with necessary API keys.
-        
-        Args:
-            stripe_api_key (str, optional): Stripe API key for payment processing
-        """
+       
         self.stripe_api_key = stripe_api_key
         if stripe_api_key:
             stripe.api_key = stripe_api_key
@@ -29,15 +21,7 @@ class PaymentProcessor:
         logger.info("Payment processor initialized")
 
     async def process_payment(self, payment_data: Dict) -> Dict:
-        """
-        Process a payment using the specified payment method.
         
-        Args:
-            payment_data (Dict): Payment information including amount and method
-            
-        Returns:
-            Dict: Payment processing result
-        """
         try:
             # Validate payment data
             self._validate_payment_data(payment_data)
@@ -77,15 +61,7 @@ class PaymentProcessor:
             }
 
     def _validate_payment_data(self, payment_data: Dict) -> None:
-        """
-        Validate payment data before processing.
-        
-        Args:
-            payment_data (Dict): Payment data to validate
-            
-        Raises:
-            ValueError: If payment data is invalid
-        """
+       
         required_fields = ['amount', 'currency', 'payment_method']
         
         for field in required_fields:
@@ -98,17 +74,7 @@ class PaymentProcessor:
             raise ValueError("Payment amount must be greater than 0")
 
     async def _process_card_payment(self, payment_data: Dict) -> Dict:
-        """
-        Process a card payment using Stripe.
-        
-        Args:
-            payment_data (Dict): Card payment information
-            
-        Returns:
-            Dict: Payment processing result
-        """
-        # TODO: Implement actual Stripe payment processing
-        # This is a placeholder for the actual implementation
+       
         return {
             "transaction_id": "card_tx_123",
             "status": "success",
@@ -116,17 +82,7 @@ class PaymentProcessor:
         }
 
     async def _process_bank_transfer(self, payment_data: Dict) -> Dict:
-        """
-        Process a bank transfer payment.
-        
-        Args:
-            payment_data (Dict): Bank transfer information
-            
-        Returns:
-            Dict: Payment processing result
-        """
-        # TODO: Implement actual bank transfer processing
-        # This is a placeholder for the actual implementation
+       
         return {
             "transaction_id": "bank_tx_123",
             "status": "pending",
@@ -190,14 +146,4 @@ class PaymentProcessor:
             "timestamp": datetime.utcnow().isoformat()
         }
 
-# Example usage:
-# async def main():
-#     processor = PaymentProcessor(stripe_api_key="your_stripe_key")
-#     payment_data = {
-#         "amount": 100.00,
-#         "currency": "USD",
-#         "payment_method": "card",
-#         "card_token": "tok_123"
-#     }
-#     result = await processor.process_payment(payment_data)
-#     print(f"Payment result: {result}")
+
