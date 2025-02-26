@@ -29,15 +29,10 @@ Use deployed app to check AutoPayX model: https://autopayx.vercel.app/
 
 # Run it in your local machine:
 1) Clone the repository to your local machine: git clone https://github.com/your-repo/ai-financial-automation.git
-
-2)Install the necessary dependencies and libraries as specified in the documentation.
-
-3)Install requirements for streamlit app pip install -r requirements.txt
-
-4)Set up the environment and configure the solution parameters according to your requirements.
-
-5)Run Backend Server: uvicorn backend.app:app --reload
-
+2) Install the necessary dependencies and libraries as specified in the documentation.
+3) Install requirements for streamlit app pip install -r requirements.txt
+4) Set up the environment and configure the solution parameters according to your requirements.
+5) Run Backend Server: uvicorn backend.app:app --reload
 6) Launch Frontend (If using a framework like React):
 cd frontend
 npm install && npm start
